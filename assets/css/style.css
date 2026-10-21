@@ -1,10 +1,3 @@
-/* Aggiungi qui le tue regole CSS per:
-   - .priorita-alta / .priorita-media / .priorita-bassa
-   - .badge (l'etichetta della priorità dentro il task)
-   - .data (la data di creazione)
-   - .evidenziato (sfondo giallo, bordo)
-*/
-
 * {
   box-sizing: border-box;
 }
@@ -121,12 +114,6 @@ li button:hover {
   font-size: 15px;
   cursor: pointer;
   color: #1b2845;
-  transition: all 0.2s;
-}
-
-#bottone-aggiungi:hover {
-  background: #1b2845;
-  color: #ffffff;
 }
 
 #bottone {
@@ -140,7 +127,8 @@ li button:hover {
   color: #1b2845;
 }
 
-#bottone:hover {
+#bottone:hover,
+#bottone-aggiungi:hover{
   background: #1b2845;
   color: #ffffff;
 }

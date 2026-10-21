@@ -69,7 +69,6 @@ function aggiungiTask() {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = task.completato;
-    checkbox.style.marginRight = "10px";
     checkbox.addEventListener("change", () => {
       task.completato = checkbox.checked;
       aggiungiTask();
@@ -84,10 +83,10 @@ function aggiungiTask() {
     }
     newLi.appendChild(textSpan);
 
-    // const badge = document.createElement("span");
-    // badge.classList.add("badge");
-    // badge.textContent = task.priorita;
-    // newLi.appendChild(badge);
+    /* const badge = document.createElement("span");
+    badge.classList.add("badge");
+    badge.textContent = task.priorita;
+    newLi.appendChild(badge); */
 
     const taskDate = document.createElement("span");
     taskDate.classList.add("data", "divData");
@@ -133,15 +132,6 @@ aggiungi.addEventListener("click", () => {
 bottoniFiltro.forEach((btn) => {
   btn.addEventListener("click", () => {
     const testo = btn.textContent.trim().toLowerCase();
-
-    if (testo.includes("completati")) {
-      filtroAttivo = "Completati";
-    } else if (testo.includes("attivi")) {
-      filtroAttivo = "Attivi";
-    } else {
-      filtroAttivo = "Tutti";
-    };
-    aggiungiTask();
   });
 });
 
