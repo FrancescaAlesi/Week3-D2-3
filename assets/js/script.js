@@ -23,36 +23,36 @@ const lista = document.querySelector("#lista-task");
 const contatore = document.querySelector("#contatore");
 const inputNuovoTask = document.querySelector("#nuovo-task");
 const aggiungi = document.querySelector("#bottone-aggiungi");
-const bottoniFiltro = document.querySelectorAll(".filtri button");
+const bottoniFiltro = document.querySelectorAll("button");
 
 const myTask = [
   {
     titoloTask: "Pagare le bollette",
-    // priorita: "alta",
+    priorita: "alta",
     data: new Date(),
   },
 
   {
     titoloTask: "Studiare JavaScript",
-    // priorita: "media",
+    priorita: "media",
     data: new Date(),
   },
 
   {
     titoloTask: "Comprare il pane",
-    // priorita: "bassa",
+    priorita: "bassa",
     data: new Date(),
   },
 
   {
     titoloTask: "Chiamare il dentista",
-    // priorita: "alta",
+    priorita: "alta",
     data: new Date(),
   },
 
   {
     titoloTask: "Riposarsi",
-    // priorita: "bassa",
+    priorita: "bassa",
     data: new Date(),
   },
 ];
@@ -64,7 +64,7 @@ function aggiungiTask() {
     if (bottone === "Completati" && !task.completato) return;
 
     const newLi = document.createElement("li");
-    // newLi.classList.add(`priorita-${task.priorita}`);
+    newLi.classList.add(`priorita-${task.priorita}`);
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -83,10 +83,10 @@ function aggiungiTask() {
     }
     newLi.appendChild(textSpan);
 
-    /* const badge = document.createElement("span");
+    const badge = document.createElement("span");
     badge.classList.add("badge");
     badge.textContent = task.priorita;
-    newLi.appendChild(badge); */
+    newLi.appendChild(badge);
 
     const taskDate = document.createElement("span");
     taskDate.classList.add("data", "divData");
@@ -120,7 +120,7 @@ aggiungi.addEventListener("click", () => {
 
   myTask.push({
     titoloTask: testo,
-    // priorita: "bassa",
+    priorita: "bassa",
     data: new Date(),
   });
 

@@ -53,7 +53,7 @@ li {
   line-height: 24px;
 }
 
-/* .priorita-alta {
+.priorita-alta {
   background-color: #fde2e2;
 }
 
@@ -73,7 +73,7 @@ li {
   color: white;
   text-transform: uppercase;
   margin-left: 10px;
-} */
+} 
 
 .data {
   font-size: 12px;
@@ -102,13 +102,13 @@ li button {
 }
 
 li button:hover {
-  background: #ff0000;
+  background-color: #ff0000;
   color: #ffffff;
 }
 
 #bottone-aggiungi {
   padding: 10px 22px;
-  background: white;
+  background-color: white;
   border: 1px solid #1b2845;
   border-radius: 6px;
   font-size: 15px;
@@ -119,7 +119,7 @@ li button:hover {
 #bottone {
   margin-bottom: 20px;
   padding: 10px 22px;
-  background: white;
+  background-color: white;
   border: 1px solid #1b2845;
   border-radius: 6px;
   font-size: 15px;
@@ -129,6 +129,6 @@ li button:hover {
 
 #bottone:hover,
 #bottone-aggiungi:hover{
-  background: #1b2845;
+  background-color: #1b2845;
   color: #ffffff;
 }
