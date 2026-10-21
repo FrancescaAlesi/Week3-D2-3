@@ -21,52 +21,73 @@
 
 const lista = document.querySelector("#lista-task");
 const contatore = document.querySelector("#contatore");
+const inputNuovoTask = document.querySelector("#nuovo-task");
+const aggiungi = document.querySelector("#bottone-aggiungi");
+const bottoniFiltro = document.querySelectorAll(".filtri button");
 
 const myTask = [
   {
     titoloTask: "Pagare le bollette",
-    priorita: "alta",
+    // priorita: "alta",
     data: new Date(),
   },
 
   {
     titoloTask: "Studiare JavaScript",
-    priorita: "media",
+    // priorita: "media",
     data: new Date(),
   },
 
   {
     titoloTask: "Comprare il pane",
-    priorita: "bassa",
+    // priorita: "bassa",
     data: new Date(),
   },
 
   {
     titoloTask: "Chiamare il dentista",
-    priorita: "alta",
+    // priorita: "alta",
     data: new Date(),
   },
 
   {
     titoloTask: "Riposarsi",
-    priorita: "bassa",
+    // priorita: "bassa",
     data: new Date(),
   },
 ];
 
 function aggiungiTask() {
+  lista.innerHTML = "";
   myTask.forEach((task) => {
+    if (bottone === "Attivi" && task.completato) return;
+    if (bottone === "Completati" && !task.completato) return;
+
     const newLi = document.createElement("li");
-    newLi.classList.add(`priorita-${task.priorita}`);
+    // newLi.classList.add(`priorita-${task.priorita}`);
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.completato;
+    checkbox.style.marginRight = "10px";
+    checkbox.addEventListener("change", () => {
+      task.completato = checkbox.checked;
+      aggiungiTask();
+      aggiornaContatore();
+    });
+    newLi.appendChild(checkbox);
 
     const textSpan = document.createElement("span");
     textSpan.textContent = task.titoloTask;
+    if (task.completato) {
+      textSpan.style.textDecoration = "line-through";
+    }
     newLi.appendChild(textSpan);
 
-    const badge = document.createElement("span");
-    badge.classList.add("badge");
-    badge.textContent = task.priorita;
-    newLi.appendChild(badge);
+    // const badge = document.createElement("span");
+    // badge.classList.add("badge");
+    // badge.textContent = task.priorita;
+    // newLi.appendChild(badge);
 
     const taskDate = document.createElement("span");
     taskDate.classList.add("data", "divData");
@@ -74,6 +95,15 @@ function aggiungiTask() {
 
     const elimina = document.createElement("button");
     elimina.textContent = "Elimina";
+    elimina.addEventListener("click", () => {
+      const indice = myTask.indexOf(task);
+      if (indice !== -1) {
+        myTask.splice(indice, 1);
+        aggiungiTask();
+        aggiornaContatore();
+      }
+    });
+
     taskDate.appendChild(elimina);
     newLi.appendChild(taskDate);
 
@@ -82,8 +112,38 @@ function aggiungiTask() {
 }
 
 function aggiornaContatore() {
-  contatore.textContent = myTask.length;
+  contatore.textContent = myTask.filter((t) => !t.completato).length;
 }
+
+aggiungi.addEventListener("click", () => {
+  const testo = inputNuovoTask.value.trim();
+  if (testo === "") return;
+
+  myTask.push({
+    titoloTask: testo,
+    // priorita: "bassa",
+    data: new Date(),
+  });
+
+  inputNuovoTask.value = "";
+  aggiungiTask();
+  aggiornaContatore();
+});
+
+bottoniFiltro.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const testo = btn.textContent.trim().toLowerCase();
+
+    if (testo.includes("completati")) {
+      filtroAttivo = "Completati";
+    } else if (testo.includes("attivi")) {
+      filtroAttivo = "Attivi";
+    } else {
+      filtroAttivo = "Tutti";
+    };
+    aggiungiTask();
+  });
+});
 
 aggiungiTask();
 aggiornaContatore();

@@ -2,21 +2,28 @@
 <html lang="it">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Task Manager</title>
-		<link rel="stylesheet" href="assets/css/style.css"/>
-	</head>
+		<title>Le mie Task</title>
+		<link rel="stylesheet" href="assets/css/style.css" />
+  	</head>
+  	
 	<body>
-		<h1 id="titolo">I miei task</h1>
+    	<h1 id="titolo">I miei task</h1>
 
-		<div class="aggiunta">
-			<input id="nuovo-task" placeholder="Cosa devi fare?" />
-			<button id="bottone-aggiungi">Aggiungi</button>
-		</div>
+    	<div class="aggiunta">
+      		<input id="nuovo-task" placeholder="Cosa devi fare?" />
+      		<button type="submit" id="bottone-aggiungi">Aggiungi</button>
+    	</div>
 
-		<ul id="lista-task"></ul>
+    	<div class="filtri">
+      		<button id="bottone">Tutti</button>
+      		<button id="bottone">Attivi</button>
+      		<button id="bottone">Completati</button>
+    	</div>
 
-		<p>Totale: <span id="contatore">0</span></p>
+    	<ul id="lista-task"></ul>
 
-		<script src="assets/js/script.js"></script>
-	</body>
+    	<p class="conteggio">Attivi: <span id="contatore">0</span></p>
+
+    	<script src="assets/js/script.js"></script>
+  	</body>
 </html>
